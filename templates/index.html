@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" href="static/styles.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Get text TF-IDF</title>
+	<meta name="description" content="Upload a file and get its TF-IDF statistic.">
+	<meta name="author" content="RomanK">
+</head>
+<body>
+	<form method="POST" enctype="multipart/form-data">
+	    <input name="text_file" type="file" accept=".txt" multiple>
+	    <input type="submit">
+	</form>
+	<div name="textdiv"/>
+	<table id="tfidf_table">
+		{% if data %}
+			<tr>
+				<td>word</td>
+				<td>tf</td>
+				<td>idf</td>
+			</tr>
+			{%for data in data.items()%}
+			<tr>
+				<th>{{data[0]}}</th>
+				<th>{{data[1][0]}}</th>
+				<th>{{data[1][1]}}</th>
+			</tr>
+			{%endfor%}
+		{%endif%}
+	</table>
+</body>
